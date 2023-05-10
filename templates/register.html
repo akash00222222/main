@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Brain Tumor Detection</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/styles.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&display=swap" rel="stylesheet">
+  </head>
+  
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="top">
+        <nav class="navbar navbar-expand-lg bg-light navbar-dark bg-dark navbar-fixed-top">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+              <img src="static\images\brain2.jpg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+              Brain Tumor Detector
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/register">Register</a>
+                </li>
+                <li class="nav-item">
+                </li>
+                
+                 
+                  </ul>
+                </li>
+              </ul>
+     
+    
+            </div>
+          </div>
+        </nav>
+    
+      
+     
+    
+        </div>
+      
+    
+
+{% block content %}
+<div id="model1">
+    <br><br>
+    
+    <div class="row row-cols-1 row-cols-md-2 mb-2  text-left forms-model">
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal text-center">Brain Tummer Detection</h4>
+          </div>
+          <div class="card-body">
+  <h1>Register</h1>
+  {% if error %}
+    <div class="alert alert-danger" role="alert">
+      {{ error }}
+    </div>
+  {% endif %}
+  <form method="POST" action="{{ url_for('register') }}">
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" class="form-control" name="username" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" class="form-control" name="password" minlength="8" required>
+      <span id="passwordError" style="display: none; color: red;">Password must be at least 8 characters long</span>
+      <script>
+        const passwordInput = document.querySelector('input[name="password"]');
+        const passwordError = document.querySelector('#passwordError');
+      
+        passwordInput.addEventListener('input', function() {
+          if (passwordInput.validity.tooShort) {
+            passwordError.style.display = 'inline';
+          } else {
+            passwordError.style.display = 'none';
+          }
+        });
+      </script>
+    </div><br>
+    <button type="submit" class="btn btn-warning text-center">Register</button>
+    &nbsp;
+    <a href="{{ url_for('login') }}" class="btn btn-warning text-center">Login</a>
+  </form>
+{% endblock %}
+</div>
+          </div>
+        </div>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+</body>
+</html>

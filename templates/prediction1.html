@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Brain Tumor Detection</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/styles.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    </head>
+
+<body class="clr">
+    <div id="top">
+        <nav class="navbar navbar-expand-lg bg-light navbar-dark bg-dark navbar-fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <img src="static\images\brain2.jpg" alt="" width="30" height="24"
+                        class="d-inline-block align-text-top">
+                    Brain Tumor Detector
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">CNN</a></li>
+                                <li><a class="dropdown-item" href="#">CNN</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div id="model_brain">
+        <br><br>
+        <div class="container prediction">
+        <div class="row row-cols-1 row-cols-md-2 mb-2 forms-model1 shadow-sm">
+            <div class="col">
+                <div class="mb-4 rounded-3 diagnosis">
+                    <div class="card-header py-3">
+                        <h4 class="my-0 fw-normal text-center c-header">Tummer PREDICTION</h4>
+                        <hr>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title pricing-card-title">Patient Name: {{data[1]}}</h3>
+                        <br><br>
+                        <h3 class="card-title pricing-card-title">Diagnosis Status: <B>{{data[0]}}</B></h3>
+                        <!--</h3>button type="button" class="w-100 btn btn-lg btn-outline-danger">{{data[0]}}</button>-->
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-4 rounded-3">
+                    <div class="card-header py-3">
+                        <h4 class="my-0 fw-normal text-center c-header">Brain IMAGE</h4>
+                        <hr>
+                    </div>
+                    
+                    <div class="card-body" text-center>
+                        <img src="static\user_images\{{data[1]}}.jpg" alt="User Image" class="img-card">
+                    </div>
+                    
+                    <a href="/" class="btn btn-danger reset" tabindex="-1" role="button" aria-disabled="true">Submit Another Image</a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+
+        <center>
+            <h1>Generate Report</h1>
+            <div class="mb-3">
+
+                <label for="patientDoctor" class="form-label">Patient's Doctor Name</label>
+                <input type="text" class="form-control" id="patientDoctor" placeholder="Enter patient doctor's name">
+            </div>
+            <div class="mb-3">
+
+                <label for="tl" class="form-label">Tumor Length In CM</label>
+                <input type="number" class="form-control" id="tl" placeholder="Enter Tumor Length">
+            </div><div class="mb-3">
+  
+              <label for="tw" class="form-label">Tumor Width In CM</label>
+              <input type="number" class="form-control" id="tw" placeholder="Enter Tumor Width">
+          </div>
+            <div class="mb-3">
+                <label for="patientContact" class="form-label">Patient Contact</label>
+                <input type="number" class="form-control" id="patientContact" placeholder="Enter patient contact">
+            </div>
+            <div class="mb-3">
+                <label for="patientAddress" class="form-label">Patient Address</label>
+                <input type="text" class="form-control" id="patientAddress" placeholder="Enter patient address">
+            </div>
+            <div class="mb-3">
+                <label for="nextVisitDate" class="form-label">Next Visit Date</label>
+                <input type="date" class="form-control" id="nextVisitDate" placeholder="Enter next visit date">
+            </div>
+            <!-- <button type="button" class="btn btn-primary" onclick="window.print()">Print Page</button> -->
+
+           </center>
+
+    <div id="mid">
+        <br><br>
+        <div class="container">
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+               
+
+                        
+
+        </div>
+        <div id="mid2">
+            <br><br>
+
+        </div>
+
+        <div id="end">
+            <br><br>
+            <br><br>
+            <footer class="bg-dark text-center text-white">
+              <!-- Grid container -->
+              
+          </div>
+</body>
+
+</html>
+
+<button type="button" class="btn btn-primary" onclick="printPage()">Generate Report</button>
+
+<script>
+function printPage() {
+    // Get patient name and diagnosis status
+    const patientName = document.querySelector('.diagnosis .card-title:nth-of-type(1)').innerHTML.split(': ')[1];
+    const diagnosisStatus = document.querySelector('.diagnosis .card-title:nth-of-type(2) b').innerHTML;
+
+    // Get user inputs
+    const patientDoctor = document.querySelector('#patientDoctor').value;
+    const tl = document.querySelector('#tl').value;
+    const tw = document.querySelector('#tw').value;
+    const patientContact = document.querySelector('#patientContact').value;
+    const patientAddress = document.querySelector('#patientAddress').value;
+    const nextVisitDate = document.querySelector('#nextVisitDate').value;
+    const patientImageFilename = document.querySelector('.img-card').getAttribute('src');
+
+    // Construct print page content
+    const printContent = `
+        <center><h1>Brain Tumor Report</h1></center>
+        <h2>Patient Name: ${patientName}</h2>
+        <h2>Tumor Image</h2>
+        <img src="${patientImageFilename}" alt="Patient Image" height="550",width="800">
+        <h2>Diagnosis Status: ${diagnosisStatus}</h2>
+        <h2>Tumor Length: ${tl} cm</h2>
+        <h2>Tumor Width: ${tw} cm</h2>
+        <h2>Patient's Doctor Name: ${patientDoctor}</h2>
+        <h2>Patient Contact: ${patientContact}</h2>
+        <h2>Patient Address: ${patientAddress}</h2>
+        <h2>Next Visit Date: ${nextVisitDate}</h2>
+    `;
+
+    // Create a new window for printing
+    const printWindow = window.open('', '', 'height=500,width=700');
+
+    // Write the print page content to the new window
+    printWindow.document.write('<html><head><title>Brain Tumor Report</title></head><body>');
+    printWindow.document.write(printContent);
+    printWindow.document.write('</body></html>');
+
+    // Print the new window
+    printWindow.print();
+
+    // Close the new window
+    printWindow.close();
+}
+</script>
